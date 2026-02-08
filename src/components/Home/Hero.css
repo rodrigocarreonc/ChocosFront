@@ -1,0 +1,126 @@
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: #e7d7c4;
+  color: #1b1f2b;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 0.5em;
+}
+
+.hero {
+  padding: 3rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #4b2e2a;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #3a2f2f;
+}
+
+.hero > h1 {
+  font-size: 4.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero > p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #8b715d;
+}
+.hero > a {
+  font-size: 1.2rem;
+}
+
+.hero-image {
+  position: relative;
+  margin-bottom: 450px;
+  z-index: 1;
+}
+
+.hero-image img {
+  max-height: 300px;
+  border-radius: 10px;
+  position: absolute;
+  margin-left: -200px;  
+}
+
+.chocos {
+  color: #6b4c3b;
+}
+.inge {
+  color: #8b715d;
+}
+
+
+@media screen and (min-width: 500px) {
+  .hero-image img {
+    max-height: 350px;
+    margin-left: -215px;
+  }
+}
+@media screen and (min-width: 765px) {
+  .hero-image img {
+    max-height: 450px;
+    margin-left: -290px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+    .hero > h1 {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .hero > h1 {
+        font-size: 3rem;
+    }
+    .shakeGlassBottle{
+        max-height: 50px;
+        margin-left: -160px;
+    }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1,
+.hero p,
+.hero a {
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero h1 { animation-delay: 0.2s; }
+.hero p { animation-delay: 0.5s; }
+.hero a { animation-delay: 0.8s; }

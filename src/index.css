@@ -1,9 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
   font-family: 'Helvetica Neue', sans-serif;
   background-color: #e9dccb;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {

@@ -1,0 +1,27 @@
+/* CTA.css */
+
+.cta-button {
+    background-color: #a0522d;
+    color: #fff;
+    border: none;
+    border-radius: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: fixed;
+    z-index: 1000;
+    align-self: flex-end;
+    bottom: 2rem;
+    right: 2rem;
+    top: unset;
+    left: unset;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: #7b3f1d;
+}

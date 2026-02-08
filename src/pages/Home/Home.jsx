@@ -1,12 +1,16 @@
 import React from 'react';
 import OfferBanner from '../../components/OfferBanner/OfferBanner';
+import Hero from '../../components/Home/Hero';
+import Products from '../../components/Home/Products';
+import LeadForm from '../../components/Home/LeadForm';
 import './Home.css';
 
 const Home = () => (
   <main>
     <OfferBanner />
-    <h1>Bienvenido a <span className='chocos'>Chocos</span> el <span className='inge'>Inge</span></h1>
-    <picture className='man-drinking'></picture>
+    <Hero />
+    <Products/>
+    <LeadForm />
   </main>
 );
 
