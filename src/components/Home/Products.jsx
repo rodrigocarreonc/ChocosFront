@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import milk from '../../assets/milk.png';
-import shake from '../../assets/protein-shake.png';
-import smoothie from '../../assets/smoothie.png';
+//import milk from '../../assets/milk.png';
+//import shake from '../../assets/protein-shake.png';
+//import smoothie from '../../assets/smoothie.png';
 import './Product.css';
+import { useProducts } from '../../hooks/useProducts';
 
-const products = [
-  { img: milk, name: 'Choco de Leche', link: '/product/1' },
-  { img: shake, name: 'Choco de Chocolate con Proteína', link: '/product/2' },
-  { img: smoothie, name: 'Smoothie de Chocolate', link: '/product/3' }
-];
+
 
 const Products = () => {
   const [index, setIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0); // Inicializado en 0
+  const { products, loading, error } = useProducts();
 
   const handleClick = (clickedIndex) => {
     setIndex(clickedIndex);
@@ -22,6 +20,8 @@ const Products = () => {
   return (
     <section className="products-carousel">
       <h2>¡Algunos de Nuestros Productos!</h2>
+      {loading && <p>Cargando productos...</p>}
+      {error && <p>Error al cargar productos: {error}</p>}
       <div className="carousel">
         <div className="carousel-track">
           {products.map((product, i) => {
@@ -40,11 +40,11 @@ const Products = () => {
                 onClick={() => handleClick(i)}
                 style={{ cursor: position !== 'hidden' ? 'pointer' : 'default' }}
               >
-                <img src={product.img} alt={product.name} />
-                <p>{product.name}</p>
+                <img src={product.img} alt={product.nombre} />
+                <p>{product.nombre}</p>
 
                 {position === 'center' && selectedIndex === i && (
-                  <a className="btn" href={product.link} rel="noopener noreferrer">
+                  <a className="btn" href={`/product/${product.id}`} rel="noopener noreferrer">
                     Ver en Tienda
                   </a>
                 )}
