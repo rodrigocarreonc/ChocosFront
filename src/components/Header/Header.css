@@ -1,19 +1,104 @@
+/* ==========================================================================
+   1. CONTENEDOR PRINCIPAL (HEADER)
+   ========================================================================== */
 header {
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Reducida la sombra para que se vea más limpio */
+  padding: 0.4rem 2rem; /* REDUCIDO: Antes tenías 1.5rem. Esto reduce drásticamente el alto */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.3rem;
-  font-weight: bolder;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #e6dac8; 
 }
 
-nav a {
-  margin-right: 1rem;
+/* ==========================================================================
+   2. ESTRUCTURA DE LA NAVEGACIÓN (NAV)
+   ========================================================================== */
+nav.nav-navigation {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0.2rem 0; /* REDUCIDO: Quitamos el grosor extra que inflaba el nav */
+  width: 100%;
+  position: relative; 
+}
+
+/* TRUCO: Centrado perfecto de los enlaces principales en la pantalla */
+.nav-links {
+  display: flex;
+  gap: 30px; /* Aumentado un poco para balancear la letra grande */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Estilo unificado para los enlaces (Inicio, Productos, Carrito) */
+.nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #333333;
+  font-weight: bolder;  /* Letra más imponente */
+  font-size: 1.9rem;    /* NUEVO TAMAÑO DE LETRA MÁS GRANDE */
+  transition: color 0.2s ease;
 }
 
-nav a:hover {
-  color: #cc5500;
+.nav-links a:hover {
+  color: #cc5500; /* Efecto naranja de tu hover original */
+}
+
+/* ==========================================================================
+   3. ACCIONES DE LA DERECHA (BOTÓN + CARRITO)
+   ========================================================================== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;          /* Espacio cómodo entre el botón y el carrito */
+  margin-left: auto;  /* Empuja con seguridad el bloque a la esquina derecha */
+}
+
+/* Quita márgenes por defecto del contenedor del botón */
+.auth-buttons {
+  display: inline-block;
+}
+
+/* Tu botón estilizado y adaptado al tamaño grande */
+.btn-login {
+  text-decoration: none;
+  padding: 10px 20px;   /* Un poco más de relleno para que juegue con la letra grande */
+  border-radius: 6px;
+  background-color: #553204; /* El color de tu proyecto */
+  border: 2px solid #553204; /* Borde del mismo color para un efecto sólido */
+  color: #f8f8f8;            
+  font-weight: bolder;
+  font-size: 1.2rem;    /* Proporcionalmente grande para el llamado a la acción */
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  background-color: rgba(140, 86, 35, 0.1);
+}
+
+/* ==========================================================================
+   4. ESCALADO AUTOMÁTICO DEL ICONO DEL CARRITO
+   ========================================================================== */
+/* Ajuste sutil al tamaño de la tarjeta del carrito */
+.cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem; 
+  padding: 5px 10px; /* Controla qué tan grande es el fondo blanco que lo rodea */
+  background-color: #fff; /* Si es el que le da el fondo blanco */
+  border-radius: 8px;
+}
+/* Si tu CartIcon usa una etiqueta svg interna, esto asegura que crezca */
+.cart-container svg, 
+.cart-container img {
+  width: 1.8em;        /* Ajusta este valor si quieres que se vea aún más gigante */
+  height: 1.8em;
+  transition: transform 0.2s ease;
+}
+
+.cart-container:hover svg {
+  transform: scale(1.05); /* Efecto sutil de agrandamiento en hover */
 }
