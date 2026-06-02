@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // <-- IMPORTANTE
+import { Link, useNavigate } from 'react-router-dom'; // <-- IMPORTANTE
 import './Login.css';
+import { login } from '../../api/auth';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const auth = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -17,7 +21,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Iniciando sesión con:', formData);
+    (async () => {
+      try {
+        const data = await login(formData);
+        if (data && data.access_token) {
+          localStorage.setItem('access_token', data.access_token);
+        }
+        if (data && data.customer) {
+          localStorage.setItem('customer', JSON.stringify(data.customer));
+        }
+        if (auth && auth.setAuth) auth.setAuth(data);
+        // Redirigir al inicio tras login
+        navigate('/');
+      } catch (err) {
+        console.error('Login error', err);
+      }
+    })();
   };
 
   return (

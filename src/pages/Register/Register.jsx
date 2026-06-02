@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
+import { register } from '../../api/auth';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
+  const auth = useAuth();
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
-    role: 'client' // 'client' por defecto
   });
   const [error, setError] = useState('');
 
@@ -32,12 +34,23 @@ const Register = () => {
     }
 
     setError('');
-    
-    // Aquí conectarás con tu API/Backend (Node.js, Laravel, etc.)
-    console.log('Enviando datos de registro:', formData);
-    
-    // Ejemplo de redirección al login tras registro exitoso
-    navigate('/login');
+    (async () => {
+      try {
+        const data = await register(formData);
+        // Guardar token y usuario en localStorage y actualizar context
+        if (data && data.access_token) {
+          localStorage.setItem('access_token', data.access_token);
+        }
+        if (data && data.customer) {
+          localStorage.setItem('customer', JSON.stringify(data.customer));
+        }
+        if (auth && auth.setAuth) auth.setAuth(data);
+        // Redirigir a inicio tras registro/login automático
+        navigate('/');
+      } catch (err) {
+        setError(err.message || 'Error al registrar usuario');
+      }
+    })();
   };
 
   return (
@@ -50,8 +63,8 @@ const Register = () => {
             <label>Nombre de Usuario:</label>
             <input 
               type="text" 
-              name="username" 
-              value={formData.username} 
+              name="name" 
+              value={formData.name} 
               onChange={handleChange} 
               required 
             />
@@ -66,18 +79,6 @@ const Register = () => {
               onChange={handleChange} 
               required 
             />
-          </div>
-
-          <div className="input-group">
-            <label>Tipo de Usuario:</label>
-            <select 
-              name="role" 
-              value={formData.role} 
-              onChange={handleChange}
-            >
-              <option value="client">Cliente</option>
-              <option value="admin">Administrador</option>
-            </select>
           </div>
 
           <div className="input-group">

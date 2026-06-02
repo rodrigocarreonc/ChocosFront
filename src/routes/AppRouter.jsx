@@ -12,22 +12,25 @@ import CookiePolicy from '../pages/CookiePolicy/CookiePolicy';
 import IdentificacionEcommerce from '../pages/Nosotros/InformacionLegal';
 import Login from '../pages/Login/Login';       // Las crearemos en el Paso 3
 import Register from '../pages/Register/Register'; // Las crearemos en el Paso 3
+import { AuthProvider, RequireAuth } from '../contexts/AuthContext';
 const AppRouter = () => (
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/products" element={<ProductList />} />
-    <Route path="/product/:id" element={<ProductDetail />} />
-    <Route path="/cart" element={<Cart />} />
-    <Route path="/checkout" element={<Checkout />} />
-    <Route path="/confirmation" element={<Confirmation />} />
-    <Route path="/privacity-advice" element={<PrivacityAdvice />} />
-    <Route path="/terms-conditions" element={<TermsAndConditions />} />
-    <Route path="/cookie-policy" element={<CookiePolicy />} />
-    <Route path="/legal-information" element={<IdentificacionEcommerce />} />
-    <Route path="*" element={<div>404 Not Found</div>} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-  </Routes>
+  <AuthProvider>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={<ProductList />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
+      <Route path="/checkout" element={<RequireAuth><Checkout /></RequireAuth>} />
+      <Route path="/confirmation" element={<RequireAuth><Confirmation /></RequireAuth>} />
+      <Route path="/privacity-advice" element={<PrivacityAdvice />} />
+      <Route path="/terms-conditions" element={<TermsAndConditions />} />
+      <Route path="/cookie-policy" element={<CookiePolicy />} />
+      <Route path="/legal-information" element={<IdentificacionEcommerce />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  </AuthProvider>
 );
 
 export default AppRouter;
