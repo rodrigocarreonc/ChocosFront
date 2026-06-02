@@ -1,4 +1,5 @@
 import React from 'react';
+import { IMG_URL } from '../../api/URL'; // Assuming you have a config file for API URL
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import './ProductDetail.css';
@@ -10,6 +11,12 @@ const ProductDetail = () => {
 
   const { product, loading } = useProduct(id);
 
+  const imageUrl = product?.img
+      ? product.img.startsWith('http')
+        ? product.img
+        : `${IMG_URL}/${product.img.replace(/^\//, '')}`
+      : '';
+
   if (loading) {
     return <p>Cargando producto...</p>;
   }
@@ -20,7 +27,7 @@ const ProductDetail = () => {
 
   return (
     <div className='product-detail'>
-      <img src={product.image} alt={product.nombre}/>
+      <img src={imageUrl} alt={product.nombre}/>
       <div className="product-info">
         <h2>{product.nombre}</h2>
         <p>${product.precio}</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { IMG_URL } from '../../api/URL'; // Assuming you have a config file for API URL
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
@@ -66,7 +67,7 @@ const Cart = () => {
                 </button>
               </div>
               <div className="cart-img">
-                <img src={item.image} alt={item.nombre} />
+                <img src={`${IMG_URL}/${item.img.replace(/^\//, '')}`} alt={item.nombre} />
               </div>
             </li>
           ))}
