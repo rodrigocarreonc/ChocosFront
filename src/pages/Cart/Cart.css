@@ -7,14 +7,23 @@
   margin: 4rem auto;
   font-family: 'Helvetica Neue', sans-serif;
   color: #1b1f2b;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-container h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   font-size: 2.5rem;
   color: #1b1f2b;
   font-weight: bold;
+}
+
+.cart-header {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .cart-container ul {
@@ -28,9 +37,8 @@
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  padding: 1.5rem;
+  padding: 20px 10px;
   border-radius: 12px;
-  margin-bottom: 1.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
@@ -92,8 +100,8 @@
 }
 
 .cart-total {
-  font-size: 1.4rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
   color: #6b4c3b;
 }
 
@@ -117,4 +125,12 @@
   text-align: center;
   font-size: 1.1rem;
   color: #888;
+}
+
+.clear-btn {
+  border:none;
+  background: none;
+  color: #cc5500;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
