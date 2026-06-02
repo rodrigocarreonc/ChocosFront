@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
 import { register } from '../../api/auth';
@@ -13,6 +13,12 @@ const Register = () => {
     password: '',
   });
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (auth && auth.token) {
+      navigate('/');
+    }
+  }, [auth?.token, navigate]);
 
   // RegEx: Mínimo 8 caracteres, 1 mayúscula, 1 número y 1 carácter especial
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -37,7 +43,6 @@ const Register = () => {
     (async () => {
       try {
         const data = await register(formData);
-        // Guardar token y usuario en localStorage y actualizar context
         if (data && data.access_token) {
           localStorage.setItem('access_token', data.access_token);
         }
@@ -45,7 +50,6 @@ const Register = () => {
           localStorage.setItem('customer', JSON.stringify(data.customer));
         }
         if (auth && auth.setAuth) auth.setAuth(data);
-        // Redirigir a inicio tras registro/login automático
         navigate('/');
       } catch (err) {
         setError(err.message || 'Error al registrar usuario');

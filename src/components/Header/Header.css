@@ -58,24 +58,44 @@ nav.nav-navigation {
 
 /* Quita márgenes por defecto del contenedor del botón */
 .auth-buttons {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-/* Tu botón estilizado y adaptado al tamaño grande */
-.btn-login {
+/* Estilo base para los botones de usuario */
+.btn-auth,
+.btn-login,
+.btn-orders,
+.btn-logout {
   text-decoration: none;
-  padding: 10px 20px;   /* Un poco más de relleno para que juegue con la letra grande */
+  padding: 10px 20px;
   border-radius: 6px;
-  background-color: #553204; /* El color de tu proyecto */
-  border: 2px solid #553204; /* Borde del mismo color para un efecto sólido */
-  color: #f8f8f8;            
+  background-color: #553204;
+  border: 2px solid #553204;
+  color: #f8f8f8;
   font-weight: bolder;
-  font-size: 1.2rem;    /* Proporcionalmente grande para el llamado a la acción */
+  font-size: 1.1rem;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.btn-login:hover {
-  background-color: rgba(140, 86, 35, 0.1);
+.btn-auth:hover,
+.btn-login:hover,
+.btn-orders:hover,
+.btn-logout:hover {
+  background-color: rgba(85, 50, 4, 0.85);
+}
+
+.btn-logout {
+  background-color: transparent;
+  color: #553204;
+  border-color: #553204;
+}
+
+.btn-logout:hover {
+  background-color: #553204;
+  color: #f8f8f8;
 }
 
 /* ==========================================================================

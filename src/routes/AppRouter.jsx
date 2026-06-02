@@ -10,27 +10,27 @@ import PrivacityAdvice from '../pages/PrivacityAdvice/PrivacityAdvice';
 import TermsAndConditions from '../pages/TermsAndConditions/TermsAndConditions';
 import CookiePolicy from '../pages/CookiePolicy/CookiePolicy';
 import IdentificacionEcommerce from '../pages/Nosotros/InformacionLegal';
-import Login from '../pages/Login/Login';       // Las crearemos en el Paso 3
-import Register from '../pages/Register/Register'; // Las crearemos en el Paso 3
-import { AuthProvider, RequireAuth } from '../contexts/AuthContext';
+import Orders from '../pages/Orders/Orders';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
+import { RequireAuth } from '../contexts/AuthContext';
 const AppRouter = () => (
-  <AuthProvider>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/products" element={<ProductList />} />
-      <Route path="/product/:id" element={<ProductDetail />} />
-      <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
-      <Route path="/checkout" element={<RequireAuth><Checkout /></RequireAuth>} />
-      <Route path="/confirmation" element={<RequireAuth><Confirmation /></RequireAuth>} />
-      <Route path="/privacity-advice" element={<PrivacityAdvice />} />
-      <Route path="/terms-conditions" element={<TermsAndConditions />} />
-      <Route path="/cookie-policy" element={<CookiePolicy />} />
-      <Route path="/legal-information" element={<IdentificacionEcommerce />} />
-      <Route path="*" element={<div>404 Not Found</div>} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-  </AuthProvider>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/products" element={<ProductList />} />
+    <Route path="/product/:id" element={<ProductDetail />} />
+    <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
+    <Route path="/checkout" element={<RequireAuth><Checkout /></RequireAuth>} />
+    <Route path="/confirmation" element={<RequireAuth><Confirmation /></RequireAuth>} />
+    <Route path="/orders" element={<RequireAuth><Orders /></RequireAuth>} />
+    <Route path="/privacity-advice" element={<PrivacityAdvice />} />
+    <Route path="/terms-conditions" element={<TermsAndConditions />} />
+    <Route path="/cookie-policy" element={<CookiePolicy />} />
+    <Route path="/legal-information" element={<IdentificacionEcommerce />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="*" element={<div>404 Not Found</div>} />
+  </Routes>
 );
 
 export default AppRouter;

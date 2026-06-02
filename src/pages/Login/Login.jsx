@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // <-- IMPORTANTE
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { login } from '../../api/auth';
 import { useAuth } from '../../contexts/AuthContext';
@@ -11,6 +11,13 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (auth && auth.token) {
+      navigate('/');
+    }
+  }, [auth, auth?.token, navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,6 +28,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('');
     (async () => {
       try {
         const data = await login(formData);
@@ -31,10 +39,9 @@ const Login = () => {
           localStorage.setItem('customer', JSON.stringify(data.customer));
         }
         if (auth && auth.setAuth) auth.setAuth(data);
-        // Redirigir al inicio tras login
         navigate('/');
       } catch (err) {
-        console.error('Login error', err);
+        setError(err.message || 'Error al iniciar sesión');
       }
     })();
   };
@@ -68,8 +75,7 @@ const Login = () => {
           </div>
 
           <button type="submit" className="btn-login-submit">Ingresar</button>
-          
-          {/* NUEVA SECCIÓN: PREGUNTA Y BOTÓN DE REGISTRO */}
+          {error && <p className="error-message">{error}</p>}
           <div className="login-redirect">
             <p>¿No tienes cuenta?</p>
             <Link to="/register" className="btn-to-register">
