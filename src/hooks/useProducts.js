@@ -13,7 +13,8 @@ export const useProducts = () => {
                     id: product.id,
                     nombre: product.nombre,
                     precio: product.precio,
-                    stock: product.stock
+                    stock: product.stock,
+                    img: product.img
                 }));
 
                 setProducts(cleanProducts);

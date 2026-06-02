@@ -4,7 +4,7 @@ import './OfferBanner.css'; // Assuming you have a CSS file for styles
 const OfferBanner = () => (
   <div className="offer-banner">
     <div className='marquee'>
-      <h3><a href="https://chocos-ecommerce.vercel.app/products">🔥 Oferta de la semana: Choco Proteico a $20 y Choco Deslactosado a $30</a></h3>
+      <h3><a href="/products">🔥 Oferta de la semana: Duro preparado $30!</a></h3>
     </div>
   </div>
 );
