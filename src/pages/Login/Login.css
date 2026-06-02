@@ -1,0 +1,104 @@
+/* Archivo: src/pages/Login/Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.login-input-group input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #cccccc;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-input-group input:focus {
+  border-color: #a04000;
+  box-shadow: 0 0 0 3px rgba(160, 64, 0, 0.15);
+}
+
+.btn-login-submit {
+  padding: 14px;
+  background-color: #a04000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-login-submit:hover {
+  background-color: #a04000 ;
+}
+/* Estilos para el texto de redirección abajo del formulario */
+.login-redirect {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee; /* Una línea sutil divisoria */
+}
+
+.login-redirect p {
+  margin: 0 0 8px 0;
+  color: #555555;
+  font-size: 14px;
+}
+
+.btn-to-register {
+  display: inline-block;
+  color: #a04000; /* El color de tu proyecto */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.btn-to-register:hover {
+  color: #a04000; /* Cambia al color de tu paleta */
+  text-decoration: underline; /* Se subraya al pasar el mouse */
+}

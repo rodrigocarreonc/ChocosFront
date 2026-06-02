@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IMG_URL } from '../../api/URL';
 //import milk from '../../assets/milk.png';
 //import shake from '../../assets/protein-shake.png';
 //import smoothie from '../../assets/smoothie.png';
@@ -40,7 +41,7 @@ const Products = () => {
                 onClick={() => handleClick(i)}
                 style={{ cursor: position !== 'hidden' ? 'pointer' : 'default' }}
               >
-                <img src={product.img} alt={product.nombre} />
+                <img src={`${IMG_URL}/${product.img.replace(/^\//, '')}`} alt={product.nombre} />
                 <p>{product.nombre}</p>
 
                 {position === 'center' && selectedIndex === i && (
