@@ -31,6 +31,7 @@ const ProductDetail = () => {
       <div className="product-info">
         <h2>{product.nombre}</h2>
         <p>${product.precio}</p>
+        <p>Stock: {product.stock}</p>
         <button onClick={() => addToCart({ ...product, quantity: 1 })}>
           Agregar al carrito
         </button>
