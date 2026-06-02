@@ -18,7 +18,8 @@ export const useProduct = (id) => {
                     id: foundProduct.id,
                     nombre: foundProduct.nombre,
                     precio: Number(foundProduct.precio),
-                    stock: foundProduct.stock
+                    stock: foundProduct.stock,
+                    img: foundProduct.img
                 };
 
                 setProduct(cleanProduct);

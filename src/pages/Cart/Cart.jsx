@@ -1,5 +1,7 @@
 import React from 'react';
+import { IMG_URL } from '../../api/URL'; // Assuming you have a config file for API URL
 import { useCart } from '../../contexts/CartContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import { sendOrder } from '../../api/orders';
@@ -8,19 +10,20 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { cart, removeFromCart, getTotal, addToCart, clearCart, removeItem } = useCart();
+  const { user, token } = useAuth();
   const navigate = useNavigate();
 
   const total = getTotal();
 
-  const name='Rodrigo'
-    const lastname="Carreón"
-    const orderData = {
-      nombre: name,
-      apellidos: lastname,
-      productos: cart
-          .map(item => `${item.nombre} (${item.quantity})`)
-          .join(', '),
-      monto: getTotal().toString()
+  const orderData = {
+    customer_id: user?.id,
+    nombre: user?.name || user?.username || 'Cliente',
+    apellidos: user?.lastname || '',
+    productos: cart.map(item => ({
+      id: item.id,
+      cantidad: item.quantity
+    })),
+    monto: getTotal().toString()
     };
 
 
@@ -64,7 +67,7 @@ const Cart = () => {
                 </button>
               </div>
               <div className="cart-img">
-                <img src={item.image} alt={item.nombre} />
+                <img src={`${IMG_URL}/${item.img.replace(/^\//, '')}`} alt={item.nombre} />
               </div>
             </li>
           ))}
