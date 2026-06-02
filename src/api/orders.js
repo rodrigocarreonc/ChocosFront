@@ -13,10 +13,7 @@ export const sendOrder = async (orderData) => {
 
         const response = await fetch(`${API_URL}/checkout`, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers,
             body: JSON.stringify(orderData)
         });
         if (!response.ok) {
@@ -28,5 +25,34 @@ export const sendOrder = async (orderData) => {
         console.error('Error sending order');
         return { error: error.message };
     }
-}
+};
+
+export const getOrders = async () => {
+    try {
+        const token = localStorage.getItem('access_token');
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
+        const response = await fetch(`${API_URL}/pedidos`, {
+            method: 'GET',
+            headers
+        });
+
+        if (!response.ok) {
+            const errorBody = await response.json().catch(() => null);
+            throw new Error(errorBody?.message || 'Error al cargar pedidos');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching orders', error);
+        throw error;
+    }
+};
 

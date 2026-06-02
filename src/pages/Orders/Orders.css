@@ -1,5 +1,5 @@
 .orders-container {
-  max-width: 900px;
+  width: min(1200px, 95%);
   margin: 2rem auto;
   padding: 1.5rem;
   background: #fff;
@@ -8,10 +8,67 @@
 }
 
 .orders-container h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
 }
 
 .orders-container p {
   margin-bottom: 0.75rem;
   line-height: 1.6;
+}
+
+.orders-list {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.orders-table th {
+  background-color: #f5f0e7;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+}
+
+.orders-table tbody tr:hover {
+  background-color: #f9f7f2;
+}
+
+.orders-table td {
+  color: #4f4f4f;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  color: #b72f2f;
+  background: #ffecec;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 1rem;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 0.9rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }
